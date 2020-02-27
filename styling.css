@@ -8,25 +8,37 @@ body{
 	flex-direction: column;
 }
 
-#quran-iframe{
-  position:relative;
-  top:0px;
-  left:0;
-  width:100%;
-  height:90%;
-}
 
 #button-wrapper{
 	width: 100%;
 	display:flex;
-		justify-content: space-around;
-		padding: 20px 0px;
+	justify-content: space-around;
+	padding: 20px 0px;
 }
 
+
+iframe{
+  position:relative;
+  top:0px;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+
 #iFrameWrapper{
-		width: 100%;
-		height: 100%;
-		flex: 1;
+	width: 100%;
+	height: 100%;
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+}
+
+#hadith-iframe{
+	top: -150px;
+	left: -150px;
+	width: calc(100% + 150px);
+	height: calc(100% + 150px);
 }
 
 .button{
@@ -41,6 +53,8 @@ body{
 		display: flex;
 		align-items:center;
 		background: #f8f8f8;
+		cursor: pointer;
+
 	}
 
 	@media (min-width: 992px){
@@ -53,9 +67,7 @@ body{
 @media (prefers-color-scheme: dark) {
 
   html, body{
-  	height: 100%;
     background-color: #faf3f2;
-
   }
 
   #button-wrapper{
@@ -65,10 +77,13 @@ body{
   .button{
     border: 1px solid rgb(233, 233, 233);
     background: rgb(15, 25, 31);
+	color: white;
   }
 
   a{
       text-decoration: underline;
+	  color: white;
+
   }
 
   a:link {
@@ -91,7 +106,7 @@ body{
   }
 
   #iFrameWrapper{
-			mix-blend-mode: difference;
+	mix-blend-mode: difference;
   }
 
 }
