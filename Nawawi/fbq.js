@@ -24,7 +24,6 @@ function setUrlWithCurrentHadith(){
     window.location.hash = currentHadith
 }
 
-
 function setupPageContent(){
     console.log(currentHadith)
 
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(window.location.hash) {
         hashNumber = Number(window.location.hash.substring(1))
         currentHadith = validNumberInRange(hashNumber)
-        console.log("hashLoad",currentHadith)
     }
     else{
        currentHadith = getRandomInt(lowerBound,upperBound);
