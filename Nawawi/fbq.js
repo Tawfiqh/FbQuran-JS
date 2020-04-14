@@ -6,14 +6,22 @@ const lowerBound = 1
 const upperBound =  42
 var currentHadith;
 
+function validNumberInRange(hadith){
+    return Math.min(Math.max(hadith, lowerBound), upperBound);
+}
+
 function _decrementButtons(){
-    currentHadith = Math.max(currentHadith -1, lowerBound);
+    currentHadith = validNumberInRange(currentHadith -1);
     setupPageContent()
 }
 
 function _incrementButtons(){
-    currentHadith = Math.min(currentHadith +1, upperBound);
+    currentHadith = validNumberInRange(currentHadith +1);
     setupPageContent()
+}
+
+function setUrlWithCurrentHadith(){
+    window.location.hash = currentHadith
 }
 
 
@@ -21,14 +29,23 @@ function setupPageContent(){
     console.log(currentHadith)
 
     var rootDestination = "http://sunnah.com/nawawi40/"
-    var destination =rootDestination + currentHadith
+    var destination = rootDestination + currentHadith
     document.getElementById('hadith-iframe').src = destination;
+    setUrlWithCurrentHadith()
 
 }
 
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
-	currentHadith = getRandomInt(lowerBound,upperBound);
+    if(window.location.hash) {
+        hashNumber = Number(window.location.hash.substring(1))
+        currentHadith = validNumberInRange(hashNumber)
+        console.log("hashLoad",currentHadith)
+    }
+    else{
+       currentHadith = getRandomInt(lowerBound,upperBound);
+    }
     setupPageContent()
 
 });
